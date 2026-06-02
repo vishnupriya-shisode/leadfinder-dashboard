@@ -2,8 +2,8 @@ const { fetchAllBusinesses, fetchWeakLeads } = require('../services/businessServ
 
 const getAllBusinesses = async (req, res) => {
     try {
-        const { city } = req.query
-        const businesses = await fetchAllBusinesses(city)
+        const { city, category } = req.query
+        const businesses = await fetchAllBusinesses(city, category)
         res.json({
             success: true,
             count: businesses.length,
@@ -19,8 +19,8 @@ const getAllBusinesses = async (req, res) => {
 
 const getWeakLeads = async (req, res) => {
     try {
-        const { city } = req.query
-        const leads = await fetchWeakLeads(city)
+        const { city, category } = req.query
+        const leads = await fetchWeakLeads(city, category)
         res.json({
             success: true,
             count: leads.length,
