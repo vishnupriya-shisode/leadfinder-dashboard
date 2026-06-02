@@ -14,6 +14,9 @@ app.use(cors())
 app.use(express.json())
 
 // ─── Routes ───────────────────────────────
+const businessRoutes = require('./src/routes/businessRoutes')
+app.use('/api/businesses', businessRoutes)
+
 app.get('/', (req, res) => {
     res.json({ message: 'API is running' })
 })
