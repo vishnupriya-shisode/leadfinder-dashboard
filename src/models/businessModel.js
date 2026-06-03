@@ -41,4 +41,4 @@ const createBusiness = async (businessData) => {
     return data[0]
 }
 
-module.exports = { getAllBusinesses, getWeakLeads, }
+module.exports = { getAllBusinesses, getWeakLeads, createBusiness }
