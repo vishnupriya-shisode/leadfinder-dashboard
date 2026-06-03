@@ -41,5 +41,32 @@ const addBusiness = async (req, res, next) => {
     next(error)
   }
 }
+const editBusiness = async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const updateData = req.body
+    const business = await businessService.editBusiness(id, updateData)
+    res.json({
+      success: true,
+      message: 'Business updated successfully',
+      data: business
+    })
+  } catch (err) {
+    next(err)
+  }
+}
 
-module.exports = { getAllBusinesses, getWeakLeads, addBusiness }
+const removeBusiness = async (req, res, next) => {
+  try {
+    const { id } = req.params
+    await businessService.removeBusiness(id)
+    res.json({
+      success: true,
+      message: 'Business deleted successfully'
+    })
+  } catch (err) {
+    next(err)
+  }
+}
+
+module.exports = { getAllBusinesses, getWeakLeads, addBusiness, editBusiness, removeBusiness }

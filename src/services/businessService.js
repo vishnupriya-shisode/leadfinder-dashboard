@@ -29,5 +29,18 @@ const addBusiness = async (businessData) => {
   const business = await businessModel.createBusiness(businessData)
   return business
 }
+const editBusiness = async (id, updateData) => {
+  if (!id) throw new AppError('Business ID is required', 400)
+  if (Object.keys(updateData).length === 0) {
+    throw new AppError('No update data provided', 400)
+  }
+  const business = await businessModel.updateBusiness(id, updateData)
+  return business
+}
 
-module.exports = { fetchAllBusinesses, fetchWeakLeads, addBusiness }
+const removeBusiness = async (id) => {
+  if (!id) throw new AppError('Business ID is required', 400)
+  await businessModel.deleteBusiness(id)
+  return true
+}
+module.exports = { fetchAllBusinesses, fetchWeakLeads, addBusiness, editBusiness, removeBusiness }

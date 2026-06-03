@@ -40,5 +40,25 @@ const createBusiness = async (businessData) => {
     if (error) throw error
     return data[0]
 }
+const updateBusiness = async (id, updateData) => {
+  const { data, error } = await supabase
+    .from('businesses')
+    .update(updateData)
+    .eq('id', id)
+    .select()
 
-module.exports = { getAllBusinesses, getWeakLeads, createBusiness }
+  if (error) throw error
+  if (!data || data.length === 0) throw new Error('Business not found')
+  return data[0]
+}
+
+const deleteBusiness = async (id) => {
+  const { error } = await supabase
+    .from('businesses')
+    .delete()
+    .eq('id', id)
+
+  if (error) throw error
+  return true
+}
+module.exports = { getAllBusinesses, getWeakLeads, createBusiness, updateBusiness, deleteBusiness }
