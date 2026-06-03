@@ -61,4 +61,14 @@ const deleteBusiness = async (id) => {
   if (error) throw error
   return true
 }
-module.exports = { getAllBusinesses, getWeakLeads, createBusiness, updateBusiness, deleteBusiness }
+
+const bulkCreateBusinesses = async (businessesArray) => {
+  const { data, error } = await supabase
+    .from('businesses')
+    .insert(businessesArray)
+    .select()
+
+  if (error) throw error
+  return data
+}
+module.exports = { getAllBusinesses, getWeakLeads, createBusiness, updateBusiness, deleteBusiness, bulkCreateBusinesses }

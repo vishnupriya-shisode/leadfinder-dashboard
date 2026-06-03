@@ -22,6 +22,8 @@ app.use('/api/businesses', businessRoutes)
 app.get('/', (req, res) => {
     res.json({ message: 'API is running' })
 })
+const placesRoutes = require('./src/routes/placesRoutes')
+app.use('/api/places', placesRoutes)
 
 // ─── 404 handler ──────────────────────────
 app.use((req, res) => {

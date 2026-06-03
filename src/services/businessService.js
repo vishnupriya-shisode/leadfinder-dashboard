@@ -43,4 +43,35 @@ const removeBusiness = async (id) => {
   await businessModel.deleteBusiness(id)
   return true
 }
-module.exports = { fetchAllBusinesses, fetchWeakLeads, addBusiness, editBusiness, removeBusiness }
+const bulkAddBusinesses = async (businessesArray) => {
+  if (!Array.isArray(businessesArray)) {
+    throw new AppError('Data must be an array', 400)
+  }
+  if (businessesArray.length === 0) {
+    throw new AppError('Array cannot be empty', 400)
+  }
+  if (businessesArray.length > 50) {
+    throw new AppError('Maximum 50 businesses per request', 400)
+  }
+
+  const validBusinesses = []
+  const errors = []
+
+  businessesArray.forEach((business, index) => {
+    if (!business.name) {
+      errors.push(`Item ${index + 1}: name is required`)
+    } else if (!business.city) {
+      errors.push(`Item ${index + 1}: city is required`)
+    } else {
+      validBusinesses.push(business)
+    }
+  })
+
+  if (errors.length > 0) {
+    throw new AppError(`Validation errors: ${errors.join(', ')}`, 400)
+  }
+
+  const saved = await businessModel.bulkCreateBusinesses(validBusinesses)
+  return saved
+}
+module.exports = { fetchAllBusinesses, fetchWeakLeads, addBusiness, editBusiness, removeBusiness, bulkAddBusinesses }

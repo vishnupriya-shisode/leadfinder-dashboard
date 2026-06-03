@@ -68,5 +68,21 @@ const removeBusiness = async (req, res, next) => {
     next(err)
   }
 }
+const bulkAddBusinesses = async (req, res, next) => {
+  try {
+    const businessesArray = req.body
+    const saved = await businessService.bulkAddBusinesses(businessesArray)
+    res.status(201).json({
+      success: true,
+      message: `Successfully saved ${saved.length} businesses`,
+      total: businessesArray.length,
+      saved: saved.length,
+      failed: businessesArray.length - saved.length,
+      data: saved
+    })
+  } catch (err) {
+    next(err)
+  }
+}
 
-module.exports = { getAllBusinesses, getWeakLeads, addBusiness, editBusiness, removeBusiness }
+module.exports = { getAllBusinesses, getWeakLeads, addBusiness, editBusiness, removeBusiness, bulkAddBusinesses }
