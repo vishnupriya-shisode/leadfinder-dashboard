@@ -31,5 +31,14 @@ const getWeakLeads = async (city, category) => {
     if (error) throw error
     return data
 }
+const createBusiness = async (businessData) => {
+    const { data, error } = await supabase
+        .from('businesses')
+        .insert([businessData])
+        .select()
 
-module.exports = { getAllBusinesses, getWeakLeads }
+    if (error) throw error
+    return data[0]
+}
+
+module.exports = { getAllBusinesses, getWeakLeads, }

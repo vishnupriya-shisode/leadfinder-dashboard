@@ -11,5 +11,14 @@ const fetchWeakLeads = async (city, category) => {
     const leads = await getWeakLeads(city, category)
     return leads
 }
+const createBusiness = async (businessData) => {
+    const { name, city } = businessData
+
+    if (!name) throw new Error('Business name is required')
+    if (!city) throw new Error('City is required')
+
+    const business = await createBusiness(businessData)
+    return business
+}
 
 module.exports = { fetchAllBusinesses, fetchWeakLeads }
