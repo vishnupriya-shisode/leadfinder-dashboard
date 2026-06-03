@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const { getAllBusinesses, getWeakLeads } = require('../controllers/businessController')
+const businessController = require('../controllers/businessController')
 
-router.get('/', getAllBusinesses)
-router.get('/leads', getWeakLeads)
+router.get('/', businessController.getAllBusinesses)
+router.get('/leads', businessController.getWeakLeads)
+router.post('/', businessController.addBusiness)
 
 module.exports = router
