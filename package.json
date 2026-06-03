@@ -12,10 +12,12 @@
   "license": "ISC",
   "description": "Backend API for discovering local businesses with weak digital presence",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@supabase/supabase-js": "^2.106.2",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "groq-sdk": "^1.2.1",
     "pg": "^8.21.0",
     "ws": "^8.21.0"
   },
