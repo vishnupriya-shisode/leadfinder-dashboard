@@ -13,7 +13,11 @@ console.log('Supabase connected:', !!supabase)
 
 // ─── Middleware ───────────────────────────
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'https://leadfinder-frontend-eta.vercel.app/'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://leadfinder-frontend-eta.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 app.use(express.json())
@@ -35,9 +39,6 @@ app.use((req, res) => {
     message: `Route ${req.originalUrl} not found`
   })
 })
-
-// ─── Global error handler ─────────────────
-app.use(errorHandler)
 
 // ─── Error Handler ────────────────────────
 app.use(errorHandler)
