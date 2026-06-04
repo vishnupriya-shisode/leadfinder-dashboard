@@ -12,7 +12,10 @@ console.log('Supabase connected:', !!supabase)
 
 
 // ─── Middleware ───────────────────────────
-app.use(cors())
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}))
 app.use(express.json())
 
 // ─── Routes ───────────────────────────────
