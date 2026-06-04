@@ -2,12 +2,14 @@ LeadFinder — Dashboard
 A full-stack SaaS dashboard for identifying local businesses with weak digital presence and generating AI-powered outreach messages.
 
 ✦ Technologies
+
 React
 Vite
 Recharts
 Axios
 
 🚀 Features
+
 Search businesses by city and category
 Bar chart showing business distribution by category
 Live lead summary stats total, weak leads, no website, average rating
@@ -17,9 +19,11 @@ Color coded, rose for weak leads, mint for strong presence
 Connects to a live REST API backend
 
 🛠 The Process
+
 I designed and built this dashboard to visualize data from my LeadFinder backend API. Started with a clean design system, violet and rose palette, minimal cards, consistent spacing. Built each component independently-->  Navbar, SearchBar, BusinessCard, Charts, then composed them into the Dashboard page. Connected it to the live Railway backend using Axios. Deployed on Vercel with automatic redeployment on every push.
 
 💡 What I Learned
+
 React component architecture and props
 useState and async data fetching in React
 How to use Recharts for data visualization
