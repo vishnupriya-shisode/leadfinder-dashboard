@@ -91,3 +91,9 @@ https://leadfinder-frontend-eta.vercel.app
 ## 🔗 Backend Repository
 
 https://github.com/vishnupriya-shisode/leadfinder-dashboard
+
+## 📸 Screenshot
+
+![LeadFinder Dashboard](leadfinder-dashboard.png)
+
+The dashboard helps identify local businesses with limited digital presence, visualize lead quality through charts and summary metrics, and generate AI-powered outreach opportunities.
